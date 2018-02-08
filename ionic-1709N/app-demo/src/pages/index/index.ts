@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {HttpClient} from "@angular/common/http";
+import {Storage} from "@ionic/storage";
 
 /**
  * Generated class for the IndexPage page.
@@ -20,14 +21,19 @@ export class IndexPage {
 
   pno =1 ;
 
+  email:string;
+
   hasMoreData:boolean =true;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams ,public httpClient:HttpClient) {
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams ,
+    public httpClient:HttpClient,
+    private storage:Storage) {
 
   }
 
   ionViewDidLoad() {
-    console.log('IndexPage 视图加载完成');
     let url = '/products/1';
     this.httpClient.get(url).subscribe(
       res=>{
@@ -36,7 +42,11 @@ export class IndexPage {
       err=>{
         console.log('err');
       }
-    )
+    );
+    this.storage.get('email').then(value=>{
+      this.email = value;
+      //console.log(value);
+    })
   }
 
    doInfinite(event):void{

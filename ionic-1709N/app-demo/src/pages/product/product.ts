@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { HttpClient } from "@angular/common/http";
+import {Storage} from "@ionic/storage";
 
 /**
  * Generated class for the ProductPage page.
@@ -15,8 +16,16 @@ import { HttpClient } from "@angular/common/http";
   templateUrl: 'product.html',
 })
 export class ProductPage {
+
   product:any = [];
-  constructor(public navCtrl: NavController, public navParams: NavParams,public httpClient:HttpClient) {
+
+  email:string;
+
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    public httpClient:HttpClient ,
+    private storage:Storage) {
   }
 
   ionViewDidLoad() {
