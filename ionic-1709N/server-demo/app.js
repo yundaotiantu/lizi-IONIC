@@ -72,6 +72,19 @@ app.get('/products/:page',(req,res)=>{
 })
 
 //4.商品图片
-app.get('/pictures/:productId',(req,res)=>{
-    let productId = req.query.productId;
-})
+app.get('/product/:productId', (req, res) => {
+    let productId = req.params.productId;
+
+    // 实际：这里是一个关联查询，查询商品的所有详情信息
+    let sql = `SELECT p1.* , p2.name FROM db.product as p1 INNER JOIN db.picture AS p2 ON p1.id=p2.productId WHERE p1.id = ?`;
+    pool.query(sql, [productId], (err, results) => {
+        if (err) throw err;
+        /*
+            {
+              "status":"ok",
+              "data": []
+            }
+         */
+        res.send(results);
+    })
+});

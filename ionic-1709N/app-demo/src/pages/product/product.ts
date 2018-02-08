@@ -15,13 +15,22 @@ import { HttpClient } from "@angular/common/http";
   templateUrl: 'product.html',
 })
 export class ProductPage {
-
+  product:any = [];
   constructor(public navCtrl: NavController, public navParams: NavParams,public httpClient:HttpClient) {
   }
 
   ionViewDidLoad() {
     let productId = this.navParams.get('productId');
-    let url = `./pictures/${productId }`
+    let url = `/product/${productId}`;
+    this.httpClient.get(url)
+      .subscribe(
+        (res) => {
+          this.product = res;
+        },
+        (err) => {
+          console.error(err);
+        }
+      );
   }
 
 }
