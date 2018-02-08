@@ -50,7 +50,7 @@ app.post('/signIn',(req,res)=>{
         console.log(result);
         if(err) throw err;
         if(result.length>0){
-            res.send({"status":"OK"})
+            res.send({"status":"OK","user":result[0]})
         }else{
             res.send({"status":"err"})
         }

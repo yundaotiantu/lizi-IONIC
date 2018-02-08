@@ -21,7 +21,7 @@ export class IndexPage {
 
   pno =1 ;
 
-  email:string;
+  user:string;
 
   hasMoreData:boolean =true;
 
@@ -43,9 +43,9 @@ export class IndexPage {
         console.log('err');
       }
     );
-    this.storage.get('email').then(value=>{
-      this.email = value;
-      //console.log(value);
+    this.storage.get('user').then(value=>{
+      this.user = value;
+      console.log(value,this.user);
     })
   }
 

@@ -24,7 +24,7 @@ export class HomePage {
     this.httpClient.post(url,{user:this.user}).subscribe(
       (res)=>{
         if(res['status']==='OK'){
-          this.storage.set('email',this.user.email);
+          this.storage.set('user',res['user']);
           this.navCtrl.push('IndexPage');
         }else{
           console.error('登录失败')

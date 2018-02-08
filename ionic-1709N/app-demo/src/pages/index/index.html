@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>商品列表{{email}}</ion-title>
+    <ion-title>商品列表{{user?.email}}</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -29,7 +29,7 @@
     </div>
   </div>
 
-  <ion-infinite-scroll (ionInfinite)="doInfinite($event)" *ngIf="hasMoreData">
+  <ion-infinite-scroll distance="0.8" (ionInfinite)="doInfinite($event)" *ngIf="hasMoreData">
     <ion-infinite-scroll-content></ion-infinite-scroll-content>-
   </ion-infinite-scroll>
 
