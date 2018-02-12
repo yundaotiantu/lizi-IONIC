@@ -40,3 +40,16 @@ CREATE TABLE db.user(
   city VARCHAR(255) NOT NULL COMMENT 'city'
 )COMMENT 'user table';
 
+DROP TABLE IF EXISTS db.picture;
+CREATE TABLE db.picture(
+    id INT AUTO_INCREMENT PRIMARY KEY COMMENT 'id pk',
+    name VARCHAR(255) NOT NULL COMMENT 'pictureName',
+    productId INT COMMENT 'p_id'
+)COMMENT 'picture table';
+
+INSERT INTO db.picture VALUE(NULL,'1.png',1);
+INSERT INTO db.picture VALUE(NULL,'2.png',1);
+INSERT INTO db.picture VALUE(NULL,'3.png',1);
+INSERT INTO db.picture VALUE(NULL,'4.png',1);
+INSERT INTO db.picture VALUE(NULL,'5.png',1);
+
