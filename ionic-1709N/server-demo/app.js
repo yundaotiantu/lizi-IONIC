@@ -70,3 +70,8 @@ app.get('/products/:page',(req,res)=>{
     })
 
 })
+
+//4.商品图片
+app.get('/pictures/:productId',(req,res)=>{
+    let productId = req.query.productId;
+})
